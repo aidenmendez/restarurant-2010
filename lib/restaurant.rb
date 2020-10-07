@@ -34,11 +34,15 @@ class Restaurant
   end
 
   def announce_closing_time(hours)
-    # convert opening time to 12 hour clock
     opening_time_int = opening_time.to_i
     closing_time = opening_time_int + hours
 
-    if closing_time < 12
+    if closing_time == 12
+      "#{name} will be closing at #{closing_time.to_s}:00PM"
+    elsif closing_time == 24
+      stand_time = closing_time - 12
+      "#{name} will be closing at #{stand_time.to_s}:00AM"
+    elsif closing_time < 12
       "#{name} will be closing at #{closing_time.to_s}:00AM"
     elsif closing_time >= 12
       stand_time = closing_time - 12
